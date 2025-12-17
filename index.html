@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Pernikahan - Pipit & Faiq</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a24d;--dark:#2c2c2c;--bg:#faf7f2;--shadow:0 12px 24px rgba(0,0,0,0.06)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Poppins,sans-serif;background:var(--bg);color:var(--dark);overflow-x:hidden;scroll-behavior:smooth}
+
+/* ===== ANIMASI ELEGANT REVEAL ===== */
+.reveal { 
+    opacity: 0; 
+    transform: translateY(40px) scale(0.95); 
+    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+}
+.reveal.show { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+}
+
+/* Delay Animasi untuk Teks (Stagger) */
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+
+section{text-align:center;padding:100px 24px; position:relative}
+
+/* ===== OPENING & VIDEO ===== */
+#opening{height:100vh;position:relative;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#openingVideo{position:absolute; width:100%; height:100%; object-fit:cover; z-index:1}
+#overlay{
+ position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;
+ justify-content:center;align-items:center;color:#fff;
+ background:rgba(0,0,0,0.5); backdrop-filter: blur(2px); transition: 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#overlay h1 { font-family: 'Playfair Display'; font-size: 28px; letter-spacing: 3px; animation: fadeDown 1.5s ease; }
+
+@keyframes fadeDown { from{opacity:0; transform:translateY(-30px)} to{opacity:1; transform:translateY(0)} }
+
+#openBtn{
+ margin-top:30px; padding:15px 45px; border-radius:50px; border:none;
+ background: var(--gold); color:#fff; font-weight:600; cursor:pointer;
+ box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.4s; letter-spacing: 1px;
+}
+#openBtn:hover { transform: scale(1.05); background: #b08d3d; }
+
+/* ===== CARD STYLE ===== */
+.card {
+ background: #fff; padding: 40px 25px; border-radius: 30px;
+ max-width: 420px; margin: 25px auto; box-shadow: var(--shadow);
+ transition: transform 0.5s ease;
+}
+.card:hover { transform: translateY(-10px); }
+
+.btn-maps {
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-top: 20px; padding: 12px 30px; background: var(--gold);
+    color: #fff; text-decoration: none; border-radius: 30px;
+    font-size: 14px; font-weight: 500; transition: 0.3s;
+}
+
+/* Card Bank */
+.card.bank{background: linear-gradient(135deg, #1e3c72, #2a5298); color:#fff; text-align:left; position:relative}
+.btn-copy {
+    float: right; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    color: white; padding: 6px 14px; border-radius: 8px; font-size: 11px; cursor: pointer;
+}
+
+/* ===== CHAT BOX ===== */
+.chat-container {
+    max-width: 450px; margin: 30px auto; background: #fff;
+    border-radius: 30px; box-shadow: var(--shadow);
+    overflow: hidden;
+}
+.chat-header { background: var(--gold); color: white; padding: 20px; font-size: 18px; }
+#wishList {
+    height: 400px; overflow-y: auto; padding: 25px;
+    background: #fdfbf8; display: flex; flex-direction: column; gap: 15px;
+}
+.msg {
+    background: white; padding: 18px; border-radius: 20px 20px 20px 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-left: 5px solid var(--gold);
+    text-align: left; animation: slideRight 0.6s ease forwards;
+}
+@keyframes slideRight { from{opacity:0; transform:translateX(-20px)} to{opacity:1; transform:translateX(0)} }
+.msg b { color: var(--gold); font-size: 14px; display: block; margin-bottom: 5px; }
+.msg .time { display: block; font-size: 10px; color: #bbb; text-align: right; margin-top: 10px; }
+
+#wishForm { padding: 30px; border-top: 1px solid #f5f5f5; }
+#wishForm input, #wishForm textarea {
+    width: 100%; padding: 14px; margin-bottom: 15px; border-radius: 15px;
+    border: 1px solid #eee; outline: none; transition: 0.3s;
+}
+#wishForm button {
+    width: 100%; padding: 15px; border-radius: 15px; border: none;
+    background: var(--dark); color: white; font-weight: 600; cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<section id="opening">
+  <video id="openingVideo" playsinline preload="auto">
+    <source src="Wedding invitation Faiq dan Pipit 28mb.mp4" type="video/mp4">
+  </video>
+  <div id="overlay">
+    <h1 class="reveal">The Wedding Of</h1>
+    <h2 class="reveal delay-1" style="font-size: 45px; margin: 15px 0; font-family: 'Playfair Display';">Pipit & Faiq</h2>
+    <p id="namaTamu" class="reveal delay-2">Tamu Undangan</p>
+    <div class="reveal delay-3">
+        <button id="openBtn">Buka Undangan</button>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2 style="margin-bottom: 10px;">Mempelai Berbahagia</h2>
+  <div class="card reveal delay-1">
+    <h3>Murwanti Puspitaratna</h3>
+    <p>Putri pertama dari Bapak Slameto <br>& Ibu Dyah Widyorini</p>
+    <h2 style="margin:20px 0; color:var(--gold); font-size: 30px;">&</h2>
+    <h3>Faiq Rahmad Fajar</h3>
+    <p>Putra pertama dari Bapak Ngadiono <br>& Ibu Muji Rahayu</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2 style="margin-bottom: 30px;">Waktu & Tempat</h2>
+  <div class="card reveal delay-1">
+    <h3>📜 Akad Nikah</h3>
+    <p>Rabu, 24 Desember 2025</p>
+    <p style="font-weight: 600; color: var(--gold); margin: 8px 0; font-size: 18px;">⏰ 11.00 WIB</p>
+    <p>Jl. Doho No. 8, Kec. Sumbersari, Jember</p>
+    <a href="http://maps.google.com/?q=Jl.+Doho+No.+8+Sumbersari+Jember" class="btn-maps" target="_blank">📍 Google Maps</a>
+  </div>
+  <div class="card reveal delay-2">
+    <h3>🎉 Ngunduh Mantu</h3>
+    <p>Kamis, 25 Desember 2025</p>
+    <p style="font-weight: 600; color: var(--gold); margin: 8px 0; font-size: 18px;">⏰ 10.00 WIB</p>
+    <p>RT 05 RW 12, Rejosari, Gumelar, Balung, Jember</p>
+    <a href="http://maps.google.com/?q=Rejosari+Gumelar+Balung+Jember" class="btn-maps" target="_blank">📍 Google Maps</a>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2 style="margin-bottom: 30px;">Amplop Digital</h2>
+  <div class="card bank reveal delay-1">
+    <button class="btn-copy" data-norek="025201000096569">Salin</button>
+    <h3 style="color: #fff;">BRI</h3>
+    <p style="font-size:20px; margin:15px 0;">0252 0100 0096 569</p>
+    <span>A.n FAIQ RAHMAD</span>
+  </div>
+  <div class="card bank reveal delay-2">
+    <button class="btn-copy" data-norek="0880547151">Salin</button>
+    <h3 style="color: #fff;">BCA</h3>
+    <p style="font-size:20px; margin:15px 0;">0880 5471 51</p>
+    <span>A.n MURWANTI PUSPITARATNA</span>
+  </div>
+</section>
+
+<section class="reveal">
+    <h2>Ucapan & Doa</h2>
+    <div class="chat-container reveal delay-1">
+        <div class="chat-header">Buku Tamu Digital</div>
+        <div id="wishList"></div>
+        <form id="wishForm">
+            <input id="name" placeholder="Nama Lengkap" required>
+            <textarea id="message" rows="3" placeholder="Tulis ucapan & doa..." required></textarea>
+            <button type="submit" id="submitBtn">Kirim Pesan</button>
+        </form>
+    </div>
+</section>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+  import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDLZlUiLbCfk6PI6umLapQafXIBOO5Ta-c",
+    authDomain: "wedding-invitation-e028b.firebaseapp.com",
+    databaseURL: "https://wedding-invitation-e028b-default-rtdb.firebaseio.com",
+    projectId: "wedding-invitation-e028b",
+    storageBucket: "wedding-invitation-e028b.firebasestorage.app",
+    messagingSenderId: "708816392220",
+    appId: "1:708816392220:web:e114e2a4ad465aeb308fd9"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // LOGIKA SALIN FALLBACK
+  document.querySelectorAll('.btn-copy').forEach(button => {
+      button.addEventListener('click', function() {
+          const norek = this.getAttribute('data-norek');
+          const btn = this;
+          const textArea = document.createElement("textarea");
+          textArea.value = norek;
+          document.body.appendChild(textArea);
+          textArea.select();
+          try {
+              document.execCommand('copy');
+              const originalText = btn.innerText;
+              btn.innerText = "Tersalin!";
+              btn.style.background = "#4caf50";
+              setTimeout(() => { 
+                  btn.innerText = originalText; 
+                  btn.style.background = "rgba(255,255,255,0.15)";
+              }, 2000);
+          } catch (err) { alert("Gagal menyalin."); }
+          document.body.removeChild(textArea);
+      });
+  });
+
+  // Nama Tamu
+  const params = new URLSearchParams(window.location.search);
+  const kpd = params.get('kpd');
+  const namaTamuEl = document.getElementById('namaTamu');
+  if(kpd && namaTamuEl) namaTamuEl.textContent = decodeURIComponent(kpd.replace(/\+/g, ' '));
+
+  // Buka Undangan
+  document.getElementById('openBtn').addEventListener('click', () => {
+    document.getElementById('overlay').style.opacity = "0";
+    const vid = document.getElementById('openingVideo');
+    vid.muted = false;
+    vid.play().catch(() => {});
+    setTimeout(() => document.getElementById('overlay').remove(), 1200);
+  });
+
+  // Observer untuk Scroll Reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Firebase Wishlist
+  const wishForm = document.getElementById('wishForm');
+  wishForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const n = document.getElementById('name').value.trim();
+    const m = document.getElementById('message').value.trim();
+    if (n && m) {
+      btn.disabled = true; btn.innerText = "Mengirim...";
+      const nameKey = n.toLowerCase().replace(/[^a-z0-9]/g, '-');
+      await set(ref(db, 'wishes/' + nameKey), { name: n, message: m, timestamp: Date.now() });
+      wishForm.reset(); btn.disabled = false; btn.innerText = "Kirim Pesan";
+    }
+  });
+
+  onValue(ref(db, 'wishes'), (snapshot) => {
+    const list = document.getElementById('wishList');
+    list.innerHTML = '';
+    const data = snapshot.val();
+    if (data) {
+        Object.values(data).sort((a,b) => a.timestamp - b.timestamp).forEach(w => {
+            const timeStr = new Date(w.timestamp).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+            const div = document.createElement('div');
+            div.className = 'msg';
+            div.innerHTML = `<b>${w.name}</b><p>${w.message}</p><span class="time">${timeStr}</span>`;
+            list.appendChild(div);
+        });
+        list.scrollTop = list.scrollHeight;
+    }
+  });
+</script>
+</body>
+</html>
